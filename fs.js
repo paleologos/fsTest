@@ -104,4 +104,36 @@ fs.readFile("./data/logo.png",  function(err, fd){
 	}
 });
 
+// Upisivanje u datoteku data2
+//sadrzaj
+var contetnt= 'Ovo je novi sadrzaj',
+	
+	//parametar za opcije
+	options={
+				encoding: 'utf8',
+				flag: 'w'
+			} ;
+
+fs.writeFile('./data/data2.txt', contetnt, options, function(err){
+	if(err){
+		console.log("Upisivanje nije uspelo");
+
+	}else{
+		console.log("Promene su sacuvane");
+	}
+});
+
+//Iscitavanje iz fajla data2
+
+fs.readFile("./data/data2.txt", 'utf8', function(err, fd){
+	if(err){
+		console.log("Greska:" + err);
+		fs.close(fd);
+	}else{
+		console.log("Sadrzaj Datoteke:" +fd);
+	}
+});
+
+
+
 
