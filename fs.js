@@ -70,7 +70,7 @@ fs.readFile("./data/data.txt", 'utf8', function(err, fd){
 	}
 });
 
-
+// Iscitavanje slike
 fs.readFile("./data/data.jpg",  function(err, fd){
 	if(err){
 		console.log("Greska:" + err);
@@ -79,11 +79,29 @@ fs.readFile("./data/data.jpg",  function(err, fd){
 		
 		http.createServer(function(req, res) {
 	    res.writeHead(200, {'Content-Type': 'image/jpeg'});
-	    res.end(fd); // Send the file data to the browser.
-	  }).listen(8000);
+	    res.end(fd); //  Salje sliku u pretrazivac
+	  }).listen(8000); // port 8000 salje data.jpg
 	  console.log('Server running at http://localhost:8000/');
 
 	
 	}
 });
+
+//Iscitavanje druge slike
+fs.readFile("./data/logo.png",  function(err, fd){
+	if(err){
+		console.log("Greska:" + err);
+		fs.close(fd);
+	}else{
+		
+		http.createServer(function(req, res) {
+	    res.writeHead(200, {'Content-Type': 'image/png'});
+	    res.end(fd); //  Salje sliku u pretrazivac
+	  }).listen(8001); //drugi port salje logo.png
+	  console.log('Server running at http://localhost:8001/');
+
+	
+	}
+});
+
 
